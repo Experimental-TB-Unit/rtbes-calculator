@@ -1,0 +1,16 @@
+@import "tailwindcss" source(none);
+@source "./App.tsx";
+@source "./components/QuadrantSelector.tsx";
+@source "./components/ScoreEvolutionGraph.tsx";
+@source "./components/ui/IconComponents.tsx";
+body {font-family: system-ui, sans-serif; background: #f8fafc; color: #0f172a;}
+a {text-underline-offset:2px;}
+button:focus-visible, input:focus-visible, select:focus-visible {outline: 3px solid #6366f1; outline-offset: 3px;}
+button {touch-action: manipulation;}
+.field {display:block;width:100%;min-height:44px;border:1px solid #cbd5e1;border-radius:8px;padding:8px 10px;background:white;}
+.action {min-height:44px;padding:8px 12px;border-radius:8px;border:1px solid #cbd5e1;background:white;font-size:14px;font-weight:600;}
+.action:disabled {opacity:.45;cursor:not-allowed;}
+.critical-check {display:flex;align-items:center;gap:10px;min-height:44px;padding:6px 2px;cursor:pointer;}
+.critical-check input {width:24px;height:24px;flex:0 0 24px;}
+.lung-path {transition:fill .2s;}
+@media print {nav, .no-print {display:none!important;} footer {position:static!important;} main {padding:0!important;} body {background:white;}}

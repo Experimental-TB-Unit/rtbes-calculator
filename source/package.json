@@ -1,0 +1,31 @@
+{
+  "name": "rtbes-calculator",
+  "private": true,
+  "version": "1.0.0-rc3",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "css": "tailwindcss -i styles.input.css -o styles.css --minify",
+    "build": "npm run css && npm run typecheck && vite build && node scripts/offline.mjs",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "chart.js": "4.4.9",
+    "exceljs": "4.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.14.0",
+    "@types/react": "19.0.12",
+    "@types/react-dom": "19.0.4",
+    "typescript": "5.8.2",
+    "vite": "6.4.4",
+    "esbuild": "0.25.0",
+    "tailwindcss": "4.3.0",
+    "@tailwindcss/cli": "4.3.0"
+  },
+  "overrides": {"uuid": "11.1.1"}
+}

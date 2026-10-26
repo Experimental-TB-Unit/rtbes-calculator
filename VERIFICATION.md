@@ -1,6 +1,6 @@
-# Verification of RTBES 1.0.0-rc2
+# Verification of RTBES 1.0.0-rc3
 
-Date: 22 October 2026. All fixtures and screenshots use generated synthetic
+Date: 26 October 2026. All fixtures and screenshots use generated synthetic
 cases. No patient record is included. These are software tests, not clinical
 validation or regulatory conformity assessment.
 
@@ -30,12 +30,17 @@ validation or regulatory conformity assessment.
 
 ## Browser checks
 
-The browser acceptance script for 1.0.0-rc2 covers the capped miliary rule,
+An interactive Chromium smoke test on 26 October 2026 confirmed that the page
+renders, a synthetic baseline with cavities in two zones returns activity 4
+and chronic findings 0, and the footer correctly distinguishes unsaved changes,
+saved cases and a new unsaved draft.
+
+The browser acceptance script for 1.0.0-rc3 covers the capped miliary rule,
 paired controls, separate pleural findings and responsive layouts. It targets
 phone, tablet and desktop widths. It was not executed in this build container
 because the Playwright package is present but its Chromium executable is not;
 therefore the items below describe the scripted checks and the prior browser
-baseline, not a completed 1.0.0-rc2 browser run.
+baseline, not a completed 1.0.0-rc3 browser run.
 
 Headless Chromium 133.0.6943.0 on Linux, loaded directly through file://,
 offline context, in a copied folder whose name contains spaces. The actual

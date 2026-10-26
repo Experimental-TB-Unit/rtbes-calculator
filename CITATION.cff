@@ -5,7 +5,7 @@ message: >-
   development of RTBES.
 title: RUTI-TB Evolution Score (RTBES) Calculator
 type: software
-version: 1.0.0-rc2
+version: 1.0.0-rc3
 date-released: 2026-10-26
 authors:
   - family-names: Bechini
