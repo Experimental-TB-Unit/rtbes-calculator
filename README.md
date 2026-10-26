@@ -2,7 +2,7 @@
 
 Responsive web calculator for the **RUTI-TB Evolution Score (RTBES)**. It can
 score a single chest radiograph or an unlimited longitudinal series. It reports
-two independent results—activity and non-activity—which are never added.
+two separate results: an activity score and a chronic findings score.
 
 ## Use the calculator
 
@@ -40,7 +40,7 @@ for the current source-code and commercial-use notice.
 
 ## Technical verification
 
-Version 1.0.0-rc2 passes 37 deterministic scoring and file-transfer tests. The
+Version 1.0.0-rc3 passes 37 deterministic scoring and file-transfer tests. The
 static build is responsive and contains no image upload, telemetry or central
 patient database. See [`VERIFICATION.md`](VERIFICATION.md) for the exact scope
 and outstanding release checks.
