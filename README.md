@@ -1,28 +1,53 @@
-# RTBES calculator release candidate
+# RTBES Calculator
 
-Version 1.0.0-rc1. Read START_HERE_CA.md for the clinician workflow.
+Responsive web calculator for the **RUTI-TB Evolution Score (RTBES)**. It can
+score a single chest radiograph or an unlimited longitudinal series. It reports
+two independent results—activity and non-activity—which are never added.
 
-This distribution contains a runnable offline HTML and a source folder.
-Its lung diagram component and the indigo/teal activity–chronicity visual
-language are retained. Forms support per-quadrant evolution and explicit
-assessment.
+## Use the calculator
 
-## Doctors
+Open the published GitHub Pages site in a current browser. No account is
+required. Calculations occur locally in the browser and no observations are
+sent to a server by the calculator.
 
-Extract the ZIP and double-click RTBES.html. No installation, API key,
-account, server or internet connection is needed. Do not enter direct
-patient identifiers. Download a full JSON backup before closing. Optional
-browser storage is separate from the app folder and is not guaranteed durable.
+Use coded cases only. Do not enter names, medical-record numbers, dates of
+birth, images or free-text patient information. Press **Save case on this
+device** to reopen a case in the same browser for later follow-up. Download a
+JSON backup to move or protect the case outside that browser.
 
-The tool is implemented for the intended future use in care and research,
-but this review build is not released for clinical use. Independent clinical
-review, regulatory qualification/classification and release acceptance
-remain outstanding. Open distribution or a disclaimer does not establish
-regulatory or GDPR compliance. No central research data collection exists.
+This release candidate is intended for research, education and independent
+evaluation. It does not interpret radiographs or provide diagnostic or
+treatment recommendations.
 
-## Contributors
+## Attribution
 
-Use Node.js 24 and npm. In the source folder:
+**RTBES authors:** Jordi Bechini\*, Cristina Vilaplana\*, Patrícia Cuadras  
+\*Jordi Bechini and Cristina Vilaplana contributed equally and led the
+development of RTBES.
+
+**Copyright and institutional owner:** Germans Trias i Pujol Research Institute
+(IGTP).
+
+Please cite RTBES when reporting results obtained with this calculator. See
+[`CITATION.cff`](CITATION.cff).
+
+## Access and reuse
+
+The validated score is made available as an open-access resource. The hosted
+calculator may be used without charge for clinical care, academic research,
+education and independent validation. See [`TERMS_OF_USE.md`](TERMS_OF_USE.md)
+for the current source-code and commercial-use notice.
+
+## Technical verification
+
+Version 1.0.0-rc2 passes 37 deterministic scoring and file-transfer tests. The
+static build is responsive and contains no image upload, telemetry or central
+patient database. See [`VERIFICATION.md`](VERIFICATION.md) for the exact scope
+and outstanding release checks.
+
+## Developers
+
+Requires Node.js and npm:
 
 ```sh
 npm ci --ignore-scripts
@@ -30,70 +55,5 @@ npm test
 npm run build
 ```
 
-The build regenerates styles.css and type-checks the source. Vite produces
-dist-web/ for static hosting. scripts/offline.mjs uses esbuild to produce
-dist-offline/RTBES.html with classic bundled JavaScript, styles and chart
-assets embedded. There are no external fonts, CDNs, module imports or API
-calls in the offline distribution. Its CSP disallows network connections.
-The web build has not been deployed.
-
-The runtime depends on React, Chart.js and ExcelJS. Dependency versions and
-transitive resolution are pinned in package-lock.json. uuid is overridden
-to a patched compatible CommonJS-capable version for ExcelJS; workbook
-tests cover writing and reading after that override. Licensing notices
-are included separately. Do not add telemetry or remote error logging
-containing observations or patient codes.
-
-The scoring engine in services/engine.ts has no React, storage or LLM
-dependency. model.ts owns the data schema; services/transfer.ts handles
-strict JSON and workbook boundaries; services/storage.ts handles optional
-transactional IndexedDB writes. App.tsx coordinates session state and UI.
-
-## Optional browser acceptance tests
-
-Install Playwright in a test environment and install its Chromium browser.
-Then run `node tests/browser.mjs /absolute/path/to/RTBES.html`.
-The test uses synthetic cases, offline mode and a file path with spaces.
-No web-security disabling flag is required by the application or test.
-Environment-specific executable/module overrides are supported by the test
-script, not by the clinician app. Windows Edge/Chrome still need manual checks.
-
-## Data and compatibility
-
-There is no automatic persistence or data transfer. Save record commits
-to this session, not a server. A full JSON backup contains schema, app and
-scoring versions, timestamps, observations, visit order, historical score
-snapshots and record count. The UI previews imports; duplicates default
-to skip and require explicit selection to replace. Invalid imports do not
-change session records. Excel import is for current observations only;
-it does not restore snapshot history. Limits: 25 MB JSON/import file,
-10 MB Excel compressed bytes, 100,000 workbook rows, 1,000 imported visits
-per case and 2,000 saved snapshots. These are defensive technical limits,
-not clinical limits or a three-follow-up restriction.
-
-The calculated result consists of two independent scores: activity and
-non-activity. They are not added. New exports contain only those two results.
-Backups before 0.1.5 are not imported automatically. They represented pleural
-thickening and calcification in one combined field, which cannot be separated
-reliably without rereading the source assessment. A clinician-reviewed
-migration would be needed. The app does not silently transform an ambiguous
-combined observation or an unknown observation into a negative finding.
-
-No encryption or authentication is implemented. Export only to approved
-protected storage. Code fields and demographic restrictions reduce direct
-identifier entry, but cannot guarantee anonymity or prevent an operator
-from misusing a code field. There is no upload of patient images or
-automatic radiological interpretation. Hosting access logs, governance,
-security review and any future research repository require separate design.
-
-## Publication checkpoint
-
-No repository, public deployment or central database has been created.
-Code ownership and the intended software licence have not been confirmed;
-therefore no new open-source licence is asserted. Do not publish this review
-package as a final licensed release until ownership and permissions for inherited
-code/artwork are resolved. The paper's licence is separate. No supplied
-paper/SOP figure, table, patient record or unpublished source document is
-included in this package. The controlled SOP is internal and deliberately not
-distributed with the web package. See SCORING_SPEC.md, VERIFICATION.md and
-docs/SOURCE_RULE_AUDIT.md.
+`dist-web/` is the GitHub Pages build and `dist-offline/RTBES.html` is the
+self-contained offline build.
