@@ -16,15 +16,16 @@ declaració d'ús assistencial requerirà una avaluació reguladora específica.
 2. L'edat en anys i el sexe biològic són opcionals i no modifiquen l'score.
 3. Confirma qualitat tècnica adequada i radiografia en bipedestació.
 4. Revisa cada signe. Pots seleccionar els quadrants al dibuix o amb els
-   botons i selectors de teclat. RS/RI = zona pulmonar superior/inferior dreta;
-   LS/LI = zona pulmonar superior/inferior esquerra. El dret del pacient apareix a
-   l'esquerra del dibuix, segons la visualització habitual d'una CXR.
-5. El botó «Confirm eligible unassessed findings absent» només s'ha de
+   botons i selectors de teclat. RU/RL = zona pulmonar superior/inferior dreta;
+   LU/LL = zona pulmonar superior/inferior esquerra. A la fila superior hi ha
+   RU/LU i a la inferior, RL/LL. El dret del pacient apareix a l'esquerra del
+   dibuix, segons la visualització habitual d'una CXR.
+5. El botó «Mark all remaining findings as absent» només s'ha de
    prémer si has comprovat que els signes pendents són absents. No és una
    detecció automàtica. Als seguiments no esborra signes prèviament presents.
 6. Confirma que has completat l'avaluació. Només llavors, si totes les
    comprovacions són vàlides, apareixen els dos scores independents:
-   activitat i no activitat. **No se sumen.**
+   activitat i troballes cròniques.
 
 ## Seguiments
 

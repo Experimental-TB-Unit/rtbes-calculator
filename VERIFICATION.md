@@ -1,4 +1,4 @@
-# Verification of RTBES 1.0.0-rc3
+# Verification of RTBES 1.0.0-rc4
 
 Date: 26 October 2026. All fixtures and screenshots use generated synthetic
 cases. No patient record is included. These are software tests, not clinical
@@ -10,7 +10,8 @@ validation or regulatory conformity assessment.
 - Production static-web build and single-file classic-script offline build: passed.
 - The packaged source is allowlisted and can be independently installed with
   npm ci, tested and rebuilt. The offline executable carries a SHA-256 manifest.
-- 37 deterministic tests: passed. Coverage includes every active and chronic
+- 37 deterministic scoring/file-transfer tests plus one clinician-facing UI
+  contract test: passed. Coverage includes every active and chronic
   parenchymal item in all quadrants, every pleural-effusion type on both sides,
   every active and calcified lymph-node item, both chronic pleural items,
   unassessed-state blocking, per-quadrant weighting,
@@ -35,12 +36,12 @@ renders, a synthetic baseline with cavities in two zones returns activity 4
 and chronic findings 0, and the footer correctly distinguishes unsaved changes,
 saved cases and a new unsaved draft.
 
-The browser acceptance script for 1.0.0-rc3 covers the capped miliary rule,
+The browser acceptance script for 1.0.0-rc4 covers the capped miliary rule,
 paired controls, separate pleural findings and responsive layouts. It targets
 phone, tablet and desktop widths. It was not executed in this build container
 because the Playwright package is present but its Chromium executable is not;
 therefore the items below describe the scripted checks and the prior browser
-baseline, not a completed 1.0.0-rc3 browser run.
+baseline, not a completed 1.0.0-rc4 browser run.
 
 Headless Chromium 133.0.6943.0 on Linux, loaded directly through file://,
 offline context, in a copied folder whose name contains spaces. The actual
@@ -113,7 +114,7 @@ not as expected outputs to copy into the engine. No patient data were altered.
 2. Double-click RTBES.html in Edge, then repeat in Chrome, without changing security.
 3. Confirm that blank/incomplete assessments have no scores. Confirm eligibility,
    mark signs absent, select two cavity quadrants and one cicatricial-lesion
-   quadrant, then finish review: activity = 4 and non-activity = 2, with no sum.
+   quadrant, then finish review: activity = 4 and chronic findings = 2.
 4. Add day-10 and day-20 follow-ups, copy preceding findings, mark both cavity
    quadrants improved and confirm each visit: activity = 2, then 1.
 5. Export full JSON, close the app, reopen and import; open the restored case.
@@ -124,6 +125,8 @@ not as expected outputs to copy into the engine. No patient data were altered.
 8. Test optional browser storage separately; do not expect it to move with HTML.
 9. Compare results and report any problem before any assistential deployment.
 
-No GitHub repository, public deployment or central research database was
-created. The executable is a release candidate for research, education and
-independent evaluation, not a final assistential release.
+The calculator is distributed through the Experimental TB Unit GitHub
+repository and GitHub Pages. This does not create a central clinical or
+research database: the calculator processes case content locally in the
+browser. The executable remains a release candidate for research, education
+and independent evaluation, not a final assistential release.

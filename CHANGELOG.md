@@ -1,4 +1,20 @@
-# Changes in 1.0.0 release candidate 3
+# Changes in 1.0.0 release candidate 4
+
+- Makes the lung diagram and the four controls use the same visible medical
+  English abbreviations: RU, LU, RL and LL.
+- Aligns the control grid with the diagram: RU/LU on the upper row and RL/LL
+  on the lower row, in chest-radiograph viewing orientation.
+- Uses “upper/lower” consistently in all visible zone labels and keeps the
+  legacy RS/RI/LS/LI identifiers only inside the data schema for compatibility.
+- Corrects “Diffused” to “Diffuse” and consistently labels the second output
+  as “Chronic findings” throughout the interface.
+- Extends the 44-pixel touch-target treatment to disclosure controls, import
+  replacement checkboxes, notices and follow-up creation.
+- Retains the release-candidate 3 technical changes for touch targets, import
+  feedback, explicit bulk completion and patient-side orientation. No scoring
+  formula changes in this release candidate.
+
+## Changes in 1.0.0 release candidate 3
 
 - Corrects the saved-state indicator so a new case is labelled as an unsaved
   draft until it has actually been written to browser storage.

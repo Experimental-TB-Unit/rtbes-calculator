@@ -40,7 +40,8 @@ for the current source-code and commercial-use notice.
 
 ## Technical verification
 
-Version 1.0.0-rc3 passes 37 deterministic scoring and file-transfer tests. The
+Version 1.0.0-rc4 passes 37 deterministic scoring and file-transfer tests plus
+one clinician-facing interface contract test. The
 static build is responsive and contains no image upload, telemetry or central
 patient database. See [`VERIFICATION.md`](VERIFICATION.md) for the exact scope
 and outstanding release checks.
